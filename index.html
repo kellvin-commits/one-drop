@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Drop Plumber - Professional Plumbing Services</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2196F3, #1976D2);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2196F3, #1976D2);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="water" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23water)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: slideInDown 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: slideInUp 1s ease-out 0.3s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #2196F3;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        h2, h3 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1976D2;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+        }
+
+        h3 {
+            font-size: 2rem;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-color: #2196F3;
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: #2196F3;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            cursor: pointer;
+            aspect-ratio: 1;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(33,150,243,0.8), rgba(25,118,210,0.8));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* Video Section */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .video-thumbnail {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 16/9;
+        }
+
+        .video-thumbnail video {
+            width: 100%;
+            height: 80%;
+            object-fit: cover;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #2196F3;
+            transition: all 0.3s ease;
+        }
+
+        .video-thumbnail:hover .play-button {
+            background: white;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        a{
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+       
+      .project-image {
+            height: 500px;
+            background-position: center;
+            background-size: cover;
+            transition: .5s ease;
+            cursor: pointer;
+        }
+        .project-image img{
+            width:100%;
+            height: 100%;
+        }
+        .project-image:hover{
+            scale: 1.1;
+        }
+    .pro-status{
+        font-size: 20px;
+        font-weight: bold;
+        display: inline-block;
+        background-color: orange;
+        padding: 4px 6px;
+        color: blue;
+        margin-top: 7px;
+        border-radius: 6px;
+        cursor: pointer;
+
+    }
+    .pro-status.pending{
+        background-color: orange;
+        color: white;
+
+    }
+    .pro-status.inprogress{
+        background-color: green;
+        color: white;
+    }
+    .pro-status.completed{
+        background-color: #d4edda;
+    }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h4 {
+            color: #1976D2;
+            margin-bottom: 0.5rem;
+            text-transform:capitalize;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2196F3;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #2196F3, #1976D2);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background: #20c157;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Custom Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.8s ease;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal-content {
+            position: relative;
+            margin: 5% auto;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .modal video {
+            width: 100%;
+            height: auto;
+        }
+
+        .close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: linear-gradient(135deg, #2196F3, #1976D2);
+                flex-direction: column;
+                align-items: center;
+                justify-content: start;
+                padding-top: 2rem;
+                transition: left 0.3s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 60px 1rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-tint"></i>
+                One Drop Plumbers
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Professional Plumbing Solutions</h1>
+            <p>Expert plumbers ready to solve all your water and drainage problems. Available 24/7 for emergency repairs.</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">
+                    <i class="fas fa-phone"></i>
+                    Get Quote
+                </a>
+                <a href="https://wa.me/+254746825901?text=Hi%20One%20Drop%20Plumber,%20I%20need%20plumbing%20assistance." class="btn btn-secondary" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="fade-in">About One Drop Plumber</h2>
+        <div class="about-content">
+            <div class="about-text slide-in-left">
+                <h3>Your Trusted Plumbing Partner</h3>
+                <p>With over 5 years of experience in the plumbing industry, One Drop Plumbers has established itself as the most reliable plumbing service provider in the region. We specialize in residential and commercial plumbing solutions, ensuring every drop counts.</p>
+                <p>Our team of certified professionals is equipped with the latest tools and techniques to handle any plumbing challenge. From minor leaks to major installations, we deliver quality work that stands the test of time.</p>
+                <ul style="list-style: none; padding: 0; margin-top: 1rem;">
+                    <li><i class="fas fa-check" style="color: #2196F3; margin-right: 0.5rem;"></i> Licensed & Insured</li>
+                    <li><i class="fas fa-check" style="color: #2196F3; margin-right: 0.5rem;"></i> 24/7 Emergency Service</li>
+                    <li><i class="fas fa-check" style="color: #2196F3; margin-right: 0.5rem;"></i> Satisfaction Guaranteed</li>
+                </ul>
+            </div>
+            <div class="about-image slide-in-right">
+                <img src="images/picthumb.jpg" alt="Professional Plumber at Work">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2 class="fade-in">Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card scale-in">
+                <i class="fas fa-wrench"></i>
+                <h4>Pipe Repair & Installation</h4>
+                <p>Complete pipe repair, replacement, and installation services for all types of plumbing systems.</p>
+            </div>
+            <div class="service-card scale-in">
+                <i class="fas fa-toilet"></i>
+                <h4>Toilet & Fixture Installation</h4>
+                <p>Professional installation and repair of toilets, sinks, faucets, and other bathroom fixtures.</p>
+            </div>
+            <div class="service-card scale-in">
+                <i class="fas fa-shower"></i>
+                <h4>Bathroom Renovation</h4>
+                <p>Complete bathroom renovation services including plumbing design and installation.</p>
+            </div>
+            <div class="service-card scale-in">
+                <i class="fas fa-faucet"></i>
+                <h4>Leak Detection & Repair</h4>
+                <p>Advanced leak detection technology to find and fix leaks quickly and efficiently.</p>
+            </div>
+            <div class="service-card scale-in">
+                <i class="fas fa-water"></i>
+                <h4>Water Heater Services</h4>
+                <p>Water heater installation, repair, and maintenance for both residential and commercial properties.</p>
+            </div>
+            <div class="service-card scale-in">
+               <i class="fa-solid fa-bars-staggered"></i>
+                <h4>Emergency Repairs</h4>
+                <p>24/7 emergency plumbing services for urgent repairs and maintenance needs.</p>
+            </div>
+
+
+             <div class="service-card scale-in">
+                <i class="fa-solid fa-water-ladder"></i>
+     
+     <h4>Domestic and commercial water pump installation and maintenance</h4>
+     <p>Domestic and industrial water  pumping machines>
+ </div>
+
+  <div class="service-card scale-in">
+     <i class="fa-solid fa-timeline"></i>
+     <h4>inspection and testing of plumping systems</h4>
+     <p>Diagnosis and resolving plumping leaks,clogs and water pressure issues</p>
+ </div>
+
+  <div class="service-card scale-in">
+     <i class="fa-solid fa-gas-pump"></i>
+     <h4>gas line installation and repair</h4>
+     <p>Laboratory gaslines and kitchen</p>
+ </div>
+
+  <div class="service-card scale-in">
+    <i class="fa-solid fa-dumpster"></i>
+     <h4>Waste pipe installation and diagnosis</h4>
+     <p>drainage cleaning,waste pipes unblocking</p>
+ </div>
+ 
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <h2 class="fade-in">Our Work Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item scale-in">
+                <img src="images/gallery6.jpg" alt="Bathroom Installation">
+                <div class="gallery-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+            <div class="gallery-item scale-in">
+                <img src="images/puretum.jpg" alt="Kitchen Plumbing">
+                <div class="gallery-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+            <div class="gallery-item scale-in">
+                <img src="images/gallery8.jpg" alt="Pipe Installation">
+                <div class="gallery-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+            <div class="gallery-item scale-in">
+                <img src="images/gallery2.jpg" alt="Water Heater">
+                <div class="gallery-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+              <div class="gallery-item scale-in">
+      <img src="images/gallery7.jpg" alt="Water Heater">
+      <div class="gallery-overlay">
+          <i class="fas fa-search-plus"></i>
+      </div>
+  </div>
+    <div class="gallery-item scale-in">
+      <img src="images/galley4.jpg" alt="Water Heater">
+      <div class="gallery-overlay">
+          <i class="fas fa-search-plus"></i>
+      </div>
+  </div>
+    <div class="gallery-item scale-in">
+      <img src="images/gallery7.jpg" alt="Water Heater">
+      <div class="gallery-overlay">
+          <i class="fas fa-search-plus"></i>
+      </div>
+  </div>
+    <div class="gallery-item scale-in">
+      <img src="images/gallery1.jpg" alt="Water Heater">
+      <div class="gallery-overlay">
+          <i class="fas fa-search-plus"></i>
+      </div>
+  </div>
+
+
+    <div class="gallery-item scale-in">
+      <img src="images/gallery10.jpg" alt="Water Heater">
+      <div class="gallery-overlay">
+          <i class="fas fa-search-plus"></i>
+      </div>
+  </div>
+
+    <div class="gallery-item scale-in">
+      <img src="images/gallery11.jpg" alt="Water Heater">
+      <div class="gallery-overlay">
+          <i class="fas fa-search-plus"></i>
+      </div>
+  </div>
+
+    <div class="gallery-item scale-in">
+      <img src="images/gallery12.jpg" alt="Water Heater">
+      <div class="gallery-overlay">
+          <i class="fas fa-search-plus"></i>
+      </div>
+  </div>
+
+    <div class="gallery-item scale-in">
+      <img src="images/gallery13.jpg" alt="Water Heater">
+      <div class="gallery-overlay">
+          <i class="fas fa-search-plus"></i>
+      </div>
+  </div>
+        </div>
+    </section>
+
+    <!-- Video Thumbnails Section -->
+    <section id="videos">
+        <h2 class="fade-in">Watch Our Work</h2>
+        <div class="video-grid">
+            <div class="video-thumbnail fade-in">
+                <img src="images/thumb2.mp4" alt="Daily Moments At Work">
+                <div class="play-button">
+                    <i class="fas fa-play"></i>
+                </div>
+            </div>
+            <div class="video-thumbnail fade-in">
+                <img src="images/thum1.mp4" alt="Preview Of Jobs">
+                <div class="play-button">
+                    <i class="fas fa-play"></i>
+                </div>
+            </div>
+            <div class="video-thumbnail fade-in">
+                <img src="images/legit1.mp4" alt="Installation Process">
+                <div class="play-button">
+                    <i class="fas fa-play"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="fade-in">Recent Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card fade-in">
+                <div class="project-image"></div>
+                <div class="project-content">
+                    <h4>Apartment Bathroom</h4>
+                    <p>Complete bathroom renovation including high-end fixtures, custom plumbing layout, and premium water systems. Delivered on time with exceptional quality.</p>
+                </div>
+            </div>
+            <div class="project-card fade-in">
+                <div class="project-image"></div>
+                <div class="project-content">
+                    <h4>Commercial Kitchen Overhaul</h4>
+                    <p>Full commercial kitchen plumbing system installation for a new restaurant. Included grease traps, dishwasher connections, and emergency shutoffs.</p>
+                </div>
+            </div>
+            <div class="project-card fade-in">
+                <div class="project-image"></div>
+                <div class="project-content">
+                    <h4>Emergency Pipe Burst Repair</h4>
+                    <p> Quick diagnosis and repair prevented extensive water damage.</p>
+                </div>
+            </div>
+
+
+              <div class="project-card fade-in">
+      <div class="project-image"></div>
+      <div class="project-content">
+          <h4>Over House Maintenace and Construction</h4>
+          <p>Quick diagnosis and repair 
+                  prevented extensive water damage on over rooftops</p>
+      </div>
+  </div>
+
+    <div class="project-card fade-in">
+      <div class="project-image"></div>
+      <div class="project-content">
+          <h4>Pipeline Diagnosis and repair</h4>
+          <p>24-hour emergency response to major pipe burst in residential complex. Quick diagnosis and repair 
+prevented extensive water damage.</p>
+      </div>
+  </div>
+
+    <div class="project-card fade-in">
+      <div class="project-image"></div>
+      <div class="project-content">
+          <h4>Maintenance and Installation Services</h4>
+          <p>24-hours offering  quality services in reverse osmosis, maintenance and installation</p>
+      </div>
+  </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="fade-in">Contact Us</h2>
+        <div class="contact-container">
+            <div class="contact-form slide-in-left">
+                <h3>Send us a Message</h3>
+                <form onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="from"  name="from" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel"  placeholder="Your Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="5" id="message" placeholder="Describe your plumbing needs..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </button>
+                </form>
+            </div>
+            <div class="contact-info slide-in-right">
+                <h3>Get in Touch</h3>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <a id="phoneIn" style="text-decoration: none;" href="tel:+254746825901" ><strong style="color: #fff;">Phone</strong> +254 746825901<br></a>
+                       
+                    </div>
+
+
+                      <div>
+     
+                    </div>
+                </div>
+
+
+
+                      <div class="contact-item">
+          <i class="fas fa-phone"></i>
+          <div>
+              <a  style="text-decoration: none;" href="tel:+254797225182" ><strong style="color: #fff;
+">Phone</strong> +254 797225182<br></a>
+             
+          </div>
+      </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                       <a id="mail" href="mailto:emmanuelngweno50@gmail.com"><strong>Email </strong> emmanuelngweno50@gmail.com<br></a> 
+                       
+                    </div>
+                </div>
+
+
+                      <div class="contact-item">
+                     <i class="fas fa-envelope"></i>
+                      <div>
+                     <a href="mailto:opiyoouleeugine@gmail.com"><strong>Email</strong>  opiyoouleeugine@gmail.com<br></a> 
+            
+                         </div>
+                                 </div>
+
+                                     <div class="contact-item">
+                  <i class="fas fa-facebook"></i>
+                        <div>
+              <a id="face" href=""><strong>Facebook</strong><br></a> 
+       </div>
+               </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div id="add">
+                        <strong>Address</strong><br>
+                        Nairobi, Kenya
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <strong>Hours</strong><br>
+                        24/7 Emergency Service
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 One Drop Plumbers. All rights reserved. | Professional Plumbing Services in Nairobi</p>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/+254746825901?text=Hi%20One%20Drop%20Plumber,%20I%20need%20plumbing%20assistance." class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeVideo()">&times;</span>
+            <video id="modalVideo" controls>
+                <source src="images/project6.jpg" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
